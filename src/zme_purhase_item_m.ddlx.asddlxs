@@ -1,0 +1,67 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI.headerInfo: {
+    typeName: 'Purchase Items',
+    typeNamePlural: 'purchase Items',
+    title: {
+        type: #STANDARD,
+        label: 'PurchaseItems',
+        value: '_Purchase'
+    }
+}
+
+annotate entity Zc_Purchaseitem_M
+    with 
+{
+
+  @UI.facet: [{
+  id: 'RequestItems',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Purchase Request Items',
+      type: #IDENTIFICATION_REFERENCE
+  }]
+
+@UI: { lineItem: [{ position: 10 }] ,
+       identification: [{ position: 10, label: 'Purchase Request Belongs to' }]}
+         @Search.defaultSearchElement: true
+ Requestid;
+
+ @UI: { lineItem: [{ position: 20 }] ,
+       identification: [{ position: 20 , label: 'Item Number' }]}
+         @Search.defaultSearchElement: true
+ Itemno;
+ 
+  @UI: { lineItem: [{ position: 30 }] ,
+       identification: [{ position: 30 , label: 'Materila ID'}]}
+         @Search.defaultSearchElement: true
+ Materialid;
+ 
+  @UI: { lineItem: [{ position: 40 }] ,
+       identification: [{ position: 40 , label: 'Material Description' }]}
+ 
+ Description;
+ 
+//  @UI: { lineItem: [{ position: 50 }] ,
+//       identification: [{ position: 50 }]}
+// 
+// Quantity;
+// 
+  @UI: { lineItem: [{ position: 60 }] ,
+       identification: [{ position: 60 , label: 'Price of each Item ' }]}
+ 
+ Price;
+ 
+  @UI: { lineItem: [{ position: 70 }] ,
+       identification: [{ position: 70 , label: 'Price of the Each Item' }]}
+ 
+ Itemamount;
+ 
+  @UI: { lineItem: [{ position: 80 }] ,
+       identification: [{ position: 80 , label: 'Currency'}]}
+ Currency;
+// /* Associations */
+// _Material;
+// _Purchase;
+    
+}
