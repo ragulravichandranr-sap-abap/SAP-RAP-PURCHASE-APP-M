@@ -1,0 +1,103 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI.headerInfo: {
+    typeName: 'Purchase Request',
+    typeNamePlural: 'Purchase Requests',
+    title: {
+        type: #STANDARD,
+        label: 'Purchase request App',
+        value: 'Requestid'
+    }
+}
+annotate entity Zc_Purchaserequest_M with
+{
+
+  @UI.facet: [{
+  id: 'Requestid',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Purchase Request',
+      type: #IDENTIFICATION_REFERENCE
+  }
+  ,
+  { id: 'RequestItems',
+      purpose: #STANDARD,
+      position: 20,
+      label: 'Purchase Items',
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_purchase_item' }
+
+  ]
+
+  @UI: { lineItem: [{ position: 10 , label: 'Request ID' }] ,
+         identification: [{ position: 10, label: 'Request ID' }]
+         ,selectionField: [{ position: 10 }]
+         }
+  @Search.defaultSearchElement: true
+  
+  @Consumption.valueHelpDefinition: [{ 
+  entity: {
+      name: 'ZI_PurchaseRequest',
+      element: 'Requestid'
+  } }]
+  Requestid;
+
+
+  @UI: { lineItem: [{ position: 20 }] ,
+         identification: [{ position: 20 , label: 'Request Name' }]
+         ,selectionField: [{ position: 20 }]}
+  @Search.defaultSearchElement: true 
+  
+    @Consumption.valueHelpDefinition: [{ 
+  entity: {
+      name: 'ZI_Employee_detail',
+      element: 'EmployeeId'
+  } }]
+  RequestorName;
+
+
+  @UI: { lineItem: [{ position: 30 }] ,
+         identification: [{ position: 30 , label: 'Department' }]
+         ,selectionField: [{ position: 30 }]}
+  @Search.defaultSearchElement: true
+  
+    @Consumption.valueHelpDefinition: [{ 
+  entity: {
+      name: 'ZI_Employee_detail',
+      element: 'Department'
+  } }]
+  Requestordepartment;
+
+  @UI: { lineItem: [{ position: 40 }] ,
+         identification: [{ position: 40 , label: 'Date'}]
+         ,selectionField: [{ position: 40 }]}
+  Requestdate;
+
+
+  @UI: { lineItem: [{ position: 40 }] ,
+         identification: [{ position: 40 , label: 'Employee ID'}]}
+  EmployeeId;
+
+
+  @UI: { lineItem: [{ position: 50 }] ,
+         identification: [{ position: 50 ,  label: 'Purchase Request Status' }]
+         ,selectionField: [{ position: 50 }]}
+  Status;
+
+
+  @UI: { lineItem: [{ position: 60 }] ,
+         identification: [{ position: 60  , label: 'Total value of the Purchas Request'}]}
+  Total;
+
+
+  //@UI: { lineItem: [{ position: 70 }] ,
+  //       identification: [{ position: 70 }]}
+  //    Currency;
+  /* Associations */
+  //    _Employee;
+  //    _purchase_item;
+  //
+
+
+
+}
